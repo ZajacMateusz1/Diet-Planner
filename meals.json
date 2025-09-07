@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "name": "Oatmeal with Banana",
+    "kcal": 350,
+    "protein": 12,
+    "fat": 8,
+    "carbs": 60,
+    "tags": ["breakfast", "sweet"]
+  },
+  {
+    "id": "2",
+    "name": "Scrambled Eggs with Tomatoes",
+    "kcal": 280,
+    "protein": 18,
+    "fat": 20,
+    "carbs": 6,
+    "tags": ["breakfast", "low-carb"]
+  },
+  {
+    "id": "3",
+    "name": "Chicken with Rice and Broccoli",
+    "kcal": 520,
+    "protein": 42,
+    "fat": 9,
+    "carbs": 70,
+    "tags": ["lunch", "high-protein"]
+  },
+  {
+    "id": "4",
+    "name": "Baked Salmon with Vegetables",
+    "kcal": 480,
+    "protein": 35,
+    "fat": 22,
+    "carbs": 25,
+    "tags": ["lunch", "dinner", "low-carb"]
+  },
+  {
+    "id": "5",
+    "name": "Tuna Salad",
+    "kcal": 300,
+    "protein": 28,
+    "fat": 10,
+    "carbs": 20,
+    "tags": ["lunch", "dinner", "light"]
+  },
+  {
+    "id": "6",
+    "name": "Wholegrain Pasta with Tomato Sauce",
+    "kcal": 420,
+    "protein": 16,
+    "fat": 9,
+    "carbs": 72,
+    "tags": ["lunch", "vegetarian"]
+  },
+  {
+    "id": "7",
+    "name": "Turkey and Avocado Sandwich",
+    "kcal": 360,
+    "protein": 22,
+    "fat": 12,
+    "carbs": 40,
+    "tags": ["breakfast", "lunch"]
+  },
+  {
+    "id": "8",
+    "name": "Pumpkin Cream Soup",
+    "kcal": 250,
+    "protein": 8,
+    "fat": 7,
+    "carbs": 40,
+    "tags": ["lunch", "dinner", "vegetarian"]
+  },
+  {
+    "id": "9",
+    "name": "Beef Steak with Roasted Potatoes",
+    "kcal": 650,
+    "protein": 50,
+    "fat": 28,
+    "carbs": 55,
+    "tags": ["dinner", "high-protein"]
+  },
+  {
+    "id": "10",
+    "name": "Chicken and Veggie Tortilla",
+    "kcal": 400,
+    "protein": 30,
+    "fat": 12,
+    "carbs": 45,
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "id": "11",
+    "name": "Yogurt with Fruits and Nuts",
+    "kcal": 280,
+    "protein": 14,
+    "fat": 9,
+    "carbs": 35,
+    "tags": ["breakfast", "light"]
+  },
+  {
+    "id": "12",
+    "name": "Greek Salad",
+    "kcal": 320,
+    "protein": 10,
+    "fat": 18,
+    "carbs": 25,
+    "tags": ["lunch", "vegetarian", "light"]
+  }
+]
