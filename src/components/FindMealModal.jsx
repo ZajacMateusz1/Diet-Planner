@@ -1,31 +1,84 @@
 import { useState } from "react";
+import FilterInputs from "./FilterInputs.jsx";
 import MEALS from "../../meals.json";
 export default function FindMealModal() {
-  const [query, setQuery] = useState("");
-  function handleSearch(userInput) {
-    setQuery(userInput);
+  const [filters, setFilters] = useState({
+    query: "",
+    minKcal: "",
+    maxKcal: "",
+    minProtein: "",
+    maxProtein: "",
+    minFat: "",
+    maxFat: "",
+    minCarbs: "",
+    maxCarbs: "",
+  });
+  function handleSearch(userInput, type) {
+    setFilters((prev) => ({ ...prev, [type]: userInput }));
   }
   const filtered = MEALS.filter((meal) => {
-    return query.toLowerCase() === ""
-      ? true
-      : meal.name.toLowerCase().includes(query.toLowerCase());
+    const matchQuery =
+      filters.query.toLowerCase() === ""
+        ? true
+        : meal.name.toLowerCase().includes(filters.query.toLowerCase());
+    const matchKcal =
+      (filters.minKcal === "" || meal.kcal >= filters.minKcal) &&
+      (filters.maxKcal === "" || meal.kcal <= filters.maxKcal);
+    const matchProtein =
+      (filters.minProtein === "" || meal.protein >= filters.minProtein) &&
+      (filters.maxProtein === "" || meal.protein <= filters.maxProtein);
+    const matchFat =
+      (filters.minFat === "" || meal.fat >= filters.minFat) &&
+      (filters.maxFat === "" || meal.fat <= filters.maxFat);
+    const matchCarbs =
+      (filters.minCarbs === "" || meal.carbs >= filters.minCarbs) &&
+      (filters.maxCarbs === "" || meal.carbs <= filters.maxCarbs);
+
+    return matchQuery && matchKcal && matchProtein && matchFat && matchCarbs;
   });
   return (
-    <dialog open={true} className="bg-[#383838] text-white p-4">
-      <h2>Choose your meal:</h2>
+    <dialog open={true} className="bg-[#383838] text-white p-4 text-center">
+      <h2 className="text-2xl">Choose your meal:</h2>
       <input
         type="text"
-        value={query}
+        value={filters.query}
         onChange={(e) => {
-          handleSearch(e.target.value);
+          handleSearch(e.target.value, "query");
         }}
-        className="bg-[#eee] p-1 text-black rounded-sm mb-2"
+        placeholder="Search your meal"
+        className="bg-[#eee] p-1 text-black rounded-sm  my-4 w-3/4"
       />
+      <div className="filters mb-4">
+        <FilterInputs
+          minFilter={"minKcal"}
+          maxFilter={"maxKcal"}
+          filters={filters}
+          handleSearch={handleSearch}
+        />
+        <FilterInputs
+          minFilter={"minProtein"}
+          maxFilter={"maxProtein"}
+          filters={filters}
+          handleSearch={handleSearch}
+        />
+        <FilterInputs
+          minFilter={"minFat"}
+          maxFilter={"maxFat"}
+          filters={filters}
+          handleSearch={handleSearch}
+        />
+        <FilterInputs
+          minFilter={"minCarbs"}
+          maxFilter={"maxCarbs"}
+          filters={filters}
+          handleSearch={handleSearch}
+        />
+      </div>
       {filtered.length > 0 ? (
         <ul>
           {filtered.map((meal) => {
             return (
-              <li key={meal.id}>
+              <li key={meal.id} className="select-none">
                 <p className="font-bold">{meal.name}</p>
                 <p className="meal-info flex gap-2 text-sm">
                   <span>kcal: {meal.kcal}</span>
@@ -40,7 +93,7 @@ export default function FindMealModal() {
         </ul>
       ) : (
         <p className="">
-          {`Hmm... nothing tasty found for ${query}. Maybe try another keyword or change filters?`}
+          {`Hmm... nothing tasty found for ${filters.query}. Maybe try another keyword or change filters?`}
         </p>
       )}
     </dialog>
