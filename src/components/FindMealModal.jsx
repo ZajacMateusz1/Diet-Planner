@@ -41,10 +41,7 @@ export default function FindMealModal() {
     return matchQuery && matchKcal && matchProtein && matchFat && matchCarbs;
   });
   return (
-    <dialog
-      open={true}
-      className="bg-[#383838] text-white p-4 flex flex-col justify-center items-center w-10/12 md:w-1/4"
-    >
+    <dialog className="bg-[#383838] text-white p-4 flex flex-col justify-center items-center w-10/12 md:w-1/4">
       <h2 className="text-xl md:text-2xl uppercase">Choose your meal</h2>
       <input
         type="text"
