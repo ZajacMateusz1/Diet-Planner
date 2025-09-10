@@ -104,7 +104,13 @@ export default function FindMealModal() {
             {filtered.map((meal) => {
               return (
                 <li key={meal.id} className="select-none">
-                  <button onClick={() => addMeal(meal)} className="text-left">
+                  <button
+                    onClick={() => {
+                      addMeal(meal);
+                      handleCloseModal();
+                    }}
+                    className="text-left"
+                  >
                     <p className="font-bold text-sm md:text-base">
                       {meal.name}
                     </p>{" "}

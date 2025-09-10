@@ -2,8 +2,10 @@ import { useReducer, useState } from "react";
 import MealContext from "./MealContext.jsx";
 function mealReducer(state, action) {
   switch (action.type) {
-    case "ADD_ITEM":
-      return { ...state, [action.slot]: action.meal };
+    case "ADD_MEAL":
+      return { ...state, [action.slot]: { meal: action.meal, quantity: 100 } };
+    case "REMOVE_MEAL":
+      return { ...state, [action.slot]: null };
     default:
       return state;
   }
@@ -29,14 +31,21 @@ export default function MealContextProvider({ children }) {
   }
   function addMeal(meal) {
     mealDispatch({
-      type: "ADD_ITEM",
+      type: "ADD_MEAL",
       meal: meal,
+      slot: selectedSlot,
+    });
+  }
+  function removeMeal() {
+    mealDispatch({
+      type: "REMOVE_MEAL",
       slot: selectedSlot,
     });
   }
   const mealCtx = {
     userMeals: mealState,
     addMeal: addMeal,
+    removeMeal: removeMeal,
     handleSetSelectedSlot: handleSetSelectedSlot,
     modalState: modalState,
     handleShowModal: handleShowModal,

@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import MealContext from "../../store/MealContext";
+import CircleButton from "./CircleButton.jsx";
 export default function Meal({ children }) {
-  const { userMeals, handleShowModal, handleSetSelectedSlot } =
+  const { userMeals, removeMeal, handleShowModal, handleSetSelectedSlot } =
     useContext(MealContext);
   const [showDetails, setShowDetails] = useState(false);
   function handleShowDetails() {
@@ -23,23 +24,35 @@ export default function Meal({ children }) {
             </button>
           )}
         </div>
-        <button
-          onClick={() => {
-            handleShowModal();
-            handleSetSelectedSlot(children);
-          }}
-          className="text-xl rounded-full bg-[#82B119] h-[4vh] w-[4vh] select-none md:cursor-pointer md:text-2xl"
-        >
-          +
-        </button>
+        <div className="control-buttons flex gap-4">
+          {userMeals[children] && (
+            <CircleButton
+              onClick={() => {
+                removeMeal();
+              }}
+              color={"#FB2C36"}
+            >
+              -
+            </CircleButton>
+          )}
+          <CircleButton
+            onClick={() => {
+              handleShowModal();
+              handleSetSelectedSlot(children);
+            }}
+            color={"#82B119"}
+          >
+            +
+          </CircleButton>
+        </div>
       </div>
       {userMeals[children] && (
         <>
           <div className="info-bottom flex gap-2 justify-center text-sm md:text-base">
-            <p>{userMeals[children].kcal} Kcal</p>
-            <p>{userMeals[children].protein} Protein</p>
-            <p>{userMeals[children].fat} Fat</p>
-            <p>{userMeals[children].carbs} carbohydrates</p>
+            <p>{userMeals[children].meal.kcal} Kcal</p>
+            <p>{userMeals[children].meal.protein} Protein</p>
+            <p>{userMeals[children].meal.fat} Fat</p>
+            <p>{userMeals[children].meal.carbs} Carbohydrates</p>
           </div>
           <div
             className={`details flex gap-8 md:gap-16 mt-1 transition-all overflow-hidden ${
@@ -49,10 +62,15 @@ export default function Meal({ children }) {
             <div className="product">
               <p className="text-xs md:text-base">
                 Name:{" "}
-                <span className="font-bold">{userMeals[children].name}</span>
+                <span className="font-bold">
+                  {userMeals[children].meal.name}
+                </span>
               </p>
               <p className="text-xs md:text-base">
-                Quantity: <span className="font-bold">1</span>
+                Quantity:{" "}
+                <span className="font-bold">
+                  {userMeals[children].quantity}g
+                </span>
               </p>
             </div>
           </div>
