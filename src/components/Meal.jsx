@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import MealContext from "../../store/MealContext";
 export default function Meal({ children }) {
+  const { handleShowModal } = useContext(MealContext);
   const [showDetails, setShowDetails] = useState(false);
   function handleShowDetails() {
     setShowDetails((prev) => !prev);
@@ -18,7 +20,10 @@ export default function Meal({ children }) {
             V
           </button>
         </div>
-        <button className="text-xl rounded-full bg-[#82B119] h-[4vh] w-[4vh] select-none md:cursor-pointer md:text-2xl">
+        <button
+          onClick={handleShowModal}
+          className="text-xl rounded-full bg-[#82B119] h-[4vh] w-[4vh] select-none md:cursor-pointer md:text-2xl"
+        >
           +
         </button>
       </div>

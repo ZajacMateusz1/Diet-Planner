@@ -12,3 +12,6 @@ h4,
 h5 {
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
