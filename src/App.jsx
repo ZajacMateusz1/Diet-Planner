@@ -1,8 +1,7 @@
 import Header from "./components/Header.jsx";
 import Meal from "./components/Meal.jsx";
-import FindMealModal from "./components/FindMealModal.jsx";
+import Modal from "./components/Modal.jsx";
 import SummaryFooter from "./components/SummaryFooter.jsx";
-import ConfirmModal from "./components/ConfirmModal.jsx";
 import MealContextProvider from "../store/MealContextProvider.jsx";
 function App() {
   return (
@@ -16,8 +15,7 @@ function App() {
         <Meal>supper</Meal>
       </main>
       <SummaryFooter />
-      <FindMealModal />
-      <ConfirmModal />
+      <Modal></Modal>
     </MealContextProvider>
   );
 }

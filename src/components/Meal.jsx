@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import MealContext from "../../store/MealContext";
 import CircleButton from "./CircleButton.jsx";
 export default function Meal({ children }) {
-  const { userMeals, removeMeal, handleShowModal, handleSetSelectedSlot } =
+  const { userMeals, handleShowModal, handleSetSelectedSlot } =
     useContext(MealContext);
   const [showDetails, setShowDetails] = useState(false);
   function handleShowDetails() {
@@ -28,7 +28,8 @@ export default function Meal({ children }) {
           {userMeals[children] && (
             <CircleButton
               onClick={() => {
-                removeMeal();
+                handleShowModal("deleteMeal");
+                handleSetSelectedSlot(children);
               }}
               color={"#FB2C36"}
             >
@@ -37,7 +38,7 @@ export default function Meal({ children }) {
           )}
           <CircleButton
             onClick={() => {
-              handleShowModal();
+              handleShowModal("findMeal");
               handleSetSelectedSlot(children);
             }}
             color={"#82B119"}

@@ -11,7 +11,7 @@ function mealReducer(state, action) {
   }
 }
 export default function MealContextProvider({ children }) {
-  const [modalState, setModalState] = useState(false);
+  const [modalState, setModalState] = useState({ open: false, type: "" });
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [mealState, mealDispatch] = useReducer(mealReducer, {
     breakfast: null,
@@ -20,11 +20,13 @@ export default function MealContextProvider({ children }) {
     dinner: null,
     supper: null,
   });
-  function handleShowModal() {
-    setModalState(true);
+  function handleShowModal(type) {
+    setModalState({ open: true, type: type });
   }
   function handleCloseModal() {
-    setModalState(false);
+    setModalState((prev) => {
+      return { ...prev, open: false };
+    });
   }
   function handleSetSelectedSlot(slot) {
     setSelectedSlot(slot);
