@@ -3,11 +3,14 @@ import MealContext from "./MealContext.jsx";
 function mealReducer(state, action) {
   switch (action.type) {
     case "ADD_ITEM":
-      break;
+      return { ...state, [action.slot]: action.meal };
+    default:
+      return state;
   }
 }
 export default function MealContextProvider({ children }) {
-  const [showModal, setShowModal] = useState(false);
+  const [modalState, setModalState] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState(null);
   const [mealState, mealDispatch] = useReducer(mealReducer, {
     breakfast: null,
     lunch: null,
@@ -16,14 +19,26 @@ export default function MealContextProvider({ children }) {
     supper: null,
   });
   function handleShowModal() {
-    setShowModal(true);
+    setModalState(true);
   }
   function handleCloseModal() {
-    setShowModal(false);
+    setModalState(false);
+  }
+  function handleSetSelectedSlot(slot) {
+    setSelectedSlot(slot);
+  }
+  function addMeal(meal) {
+    mealDispatch({
+      type: "ADD_ITEM",
+      meal: meal,
+      slot: selectedSlot,
+    });
   }
   const mealCtx = {
     userMeals: mealState,
-    showModal: showModal,
+    addMeal: addMeal,
+    handleSetSelectedSlot: handleSetSelectedSlot,
+    modalState: modalState,
     handleShowModal: handleShowModal,
     handleCloseModal: handleCloseModal,
   };

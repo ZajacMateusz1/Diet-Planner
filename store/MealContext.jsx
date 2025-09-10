@@ -1,7 +1,9 @@
 import { createContext } from "react";
 const MealContext = createContext({
   userMeals: {},
-  showModal: false,
+  addMeal: () => {},
+  handleSetSelectedSlot: () => {},
+  modalState: false,
   handleShowModal: () => {},
   handleCloseModal: () => {},
 });

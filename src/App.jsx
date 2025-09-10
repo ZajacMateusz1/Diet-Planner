@@ -8,11 +8,11 @@ function App() {
     <MealContextProvider>
       <Header />
       <main className="flex flex-col items-center gap-4 my-4">
-        <Meal>Breakfast</Meal>
-        <Meal>Lunch</Meal>
-        <Meal>Snack</Meal>
-        <Meal>Dinner</Meal>
-        <Meal>Supper</Meal>
+        <Meal>breakfast</Meal>
+        <Meal>lunch</Meal>
+        <Meal>snack</Meal>
+        <Meal>dinner</Meal>
+        <Meal>supper</Meal>
       </main>
       <SummaryFooter />
       <FindMealModal />

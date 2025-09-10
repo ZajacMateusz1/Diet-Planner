@@ -4,7 +4,7 @@ import FilterInputs from "./FilterInputs.jsx";
 import Button from "./Button.jsx";
 import MEALS from "../../meals.json";
 export default function FindMealModal() {
-  const { showModal, handleCloseModal } = useContext(MealContext);
+  const { modalState, handleCloseModal, addMeal } = useContext(MealContext);
   const modal = useRef();
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
@@ -19,9 +19,9 @@ export default function FindMealModal() {
     maxCarbs: "",
   });
   useEffect(() => {
-    if (showModal) modal.current.showModal();
+    if (modalState) modal.current.showModal();
     else modal.current.close();
-  }, [showModal]);
+  }, [modalState]);
   function handleShowFilters() {
     setShowFilters((prev) => !prev);
   }
@@ -104,14 +104,18 @@ export default function FindMealModal() {
             {filtered.map((meal) => {
               return (
                 <li key={meal.id} className="select-none">
-                  <p className="font-bold text-sm md:text-base">{meal.name}</p>{" "}
-                  <p className="meal-info flex gap-2 text-xs md:text-sm">
-                    <span>kcal: {meal.kcal}</span>
-                    <span className="text-blue-500">P: {meal.protein}</span>
-                    <span className="text-yellow-400">F: {meal.fat}</span>
-                    <span className="text-violet-400">C: {meal.carbs}</span>
-                  </p>
-                  <hr className="my-2" />
+                  <button onClick={() => addMeal(meal)} className="text-left">
+                    <p className="font-bold text-sm md:text-base">
+                      {meal.name}
+                    </p>{" "}
+                    <p className="meal-info flex gap-2 text-xs md:text-sm">
+                      <span>kcal: {meal.kcal}</span>
+                      <span className="text-blue-500">P: {meal.protein}</span>
+                      <span className="text-yellow-400">F: {meal.fat}</span>
+                      <span className="text-violet-400">C: {meal.carbs}</span>
+                    </p>
+                    <hr className="my-2" />
+                  </button>
                 </li>
               );
             })}
