@@ -1,6 +1,7 @@
 import { createContext } from "react";
 const MealContext = createContext({
   userMeals: {},
+  totals: 0,
   addMeal: () => {},
   removeMeal: () => {},
   handleSetSelectedSlot: () => {},

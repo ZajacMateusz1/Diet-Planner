@@ -10,6 +10,14 @@ function mealReducer(state, action) {
       return state;
   }
 }
+function calculateMacroTotals(mealState) {
+  const meals = Object.values(mealState).filter((meal) => meal !== null);
+  const kcal = meals.reduce((acc, { meal }) => acc + meal.kcal, 0);
+  const protein = meals.reduce((acc, { meal }) => acc + meal.protein, 0);
+  const fat = meals.reduce((acc, { meal }) => acc + meal.fat, 0);
+  const carbs = meals.reduce((acc, { meal }) => acc + meal.carbs, 0);
+  return { kcal, protein, fat, carbs };
+}
 export default function MealContextProvider({ children }) {
   const [modalState, setModalState] = useState({ open: false, type: "" });
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -44,8 +52,10 @@ export default function MealContextProvider({ children }) {
       slot: selectedSlot,
     });
   }
+  const totals = calculateMacroTotals(mealState);
   const mealCtx = {
     userMeals: mealState,
+    totals: totals,
     addMeal: addMeal,
     removeMeal: removeMeal,
     handleSetSelectedSlot: handleSetSelectedSlot,

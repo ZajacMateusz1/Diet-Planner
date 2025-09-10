@@ -99,7 +99,7 @@ export default function FindMealContent() {
                     addMeal(meal);
                     handleCloseModal();
                   }}
-                  className="text-left"
+                  className="text-left md:cursor-pointer"
                 >
                   <p className="font-bold text-sm md:text-base">{meal.name}</p>{" "}
                   <p className="meal-info flex gap-2 text-xs md:text-sm">
