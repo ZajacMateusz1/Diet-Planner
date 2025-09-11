@@ -9,7 +9,7 @@ export default function SummaryFooter() {
       </h2>
       <div className="total flex justify-around pb-4 max-w-[640px] mx-auto md:text-lg">
         <p>
-          <span>Kacal</span>
+          <span>Kcal</span>
           <span className="block">{totals.kcal}</span>
         </p>
         <p className="text-blue-500">

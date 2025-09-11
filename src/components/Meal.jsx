@@ -50,10 +50,10 @@ export default function Meal({ children }) {
       {userMeals[children] && (
         <>
           <div className="info-bottom flex gap-2 justify-center text-sm md:text-base">
-            <p>{userMeals[children].meal.kcal} Kcal</p>
-            <p>{userMeals[children].meal.protein} Protein</p>
-            <p>{userMeals[children].meal.fat} Fat</p>
-            <p>{userMeals[children].meal.carbs} Carbohydrates</p>
+            <p>{userMeals[children].kcal} Kcal</p>
+            <p>{userMeals[children].protein} Protein</p>
+            <p>{userMeals[children].fat} Fat</p>
+            <p>{userMeals[children].carbs} Carbohydrates</p>
           </div>
           <div
             className={`details flex gap-8 md:gap-16 mt-1 transition-all overflow-hidden ${
@@ -63,14 +63,12 @@ export default function Meal({ children }) {
             <div className="product">
               <p className="text-xs md:text-base">
                 Name:{" "}
-                <span className="font-bold">
-                  {userMeals[children].meal.name}
-                </span>
+                <span className="font-bold">{userMeals[children].name}</span>
               </p>
               <p className="text-xs md:text-base">
-                Quantity:{" "}
+                Portion:{" "}
                 <span className="font-bold">
-                  {userMeals[children].quantity}g
+                  {userMeals[children].portion}g
                 </span>
               </p>
             </div>
