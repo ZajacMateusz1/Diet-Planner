@@ -5,7 +5,7 @@ export default function CircleButton({ children, color, ...props }) {
       style={{
         backgroundColor: color,
       }}
-      className={`text-xl rounded-full h-[4vh] w-[4vh] select-none md:cursor-pointer md:text-2xl`}
+      className={`text-xl rounded-full  h-[4vh] w-[4vh] select-none md:cursor-pointer md:text-2xl md:hover:text-3xl transition-all`}
     >
       {children}
     </button>

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import MealContext from "../../store/MealContext.jsx";
 import FilterInputs from "./FilterInputs.jsx";
 import Button from "./Button.jsx";
@@ -23,26 +23,38 @@ export default function FindMealContent() {
   function handleSearch(userInput, type) {
     setFilters((prev) => ({ ...prev, [type]: userInput }));
   }
-  const filtered = MEALS.filter((meal) => {
-    const matchQuery =
-      filters.query.toLowerCase() === ""
-        ? true
-        : meal.name.toLowerCase().includes(filters.query.toLowerCase());
-    const matchKcal =
-      (filters.minKcal === "" || meal.kcal >= filters.minKcal) &&
-      (filters.maxKcal === "" || meal.kcal <= filters.maxKcal);
-    const matchProtein =
-      (filters.minProtein === "" || meal.protein >= filters.minProtein) &&
-      (filters.maxProtein === "" || meal.protein <= filters.maxProtein);
-    const matchFat =
-      (filters.minFat === "" || meal.fat >= filters.minFat) &&
-      (filters.maxFat === "" || meal.fat <= filters.maxFat);
-    const matchCarbs =
-      (filters.minCarbs === "" || meal.carbs >= filters.minCarbs) &&
-      (filters.maxCarbs === "" || meal.carbs <= filters.maxCarbs);
+  const filtered = useMemo(() => {
+    return MEALS.filter((meal) => {
+      const matchQuery =
+        filters.query.toLowerCase() === ""
+          ? true
+          : meal.name.toLowerCase().includes(filters.query.toLowerCase());
+      const matchKcal =
+        (filters.minKcal === "" || meal.kcal >= filters.minKcal) &&
+        (filters.maxKcal === "" || meal.kcal <= filters.maxKcal);
+      const matchProtein =
+        (filters.minProtein === "" || meal.protein >= filters.minProtein) &&
+        (filters.maxProtein === "" || meal.protein <= filters.maxProtein);
+      const matchFat =
+        (filters.minFat === "" || meal.fat >= filters.minFat) &&
+        (filters.maxFat === "" || meal.fat <= filters.maxFat);
+      const matchCarbs =
+        (filters.minCarbs === "" || meal.carbs >= filters.minCarbs) &&
+        (filters.maxCarbs === "" || meal.carbs <= filters.maxCarbs);
 
-    return matchQuery && matchKcal && matchProtein && matchFat && matchCarbs;
-  });
+      return matchQuery && matchKcal && matchProtein && matchFat && matchCarbs;
+    });
+  }, [
+    filters.query,
+    filters.minKcal,
+    filters.maxKcal,
+    filters.minProtein,
+    filters.maxProtein,
+    filters.minFat,
+    filters.maxFat,
+    filters.minCarbs,
+    filters.maxCarbs,
+  ]);
   return (
     <div className="container flex flex-col justify-center items-center">
       <h2 className="text-xl md:text-2xl uppercase">Choose your meal</h2>
@@ -99,7 +111,7 @@ export default function FindMealContent() {
                     addMeal(meal);
                     handleCloseModal();
                   }}
-                  className="text-left md:cursor-pointer"
+                  className="text-left md:cursor-pointer p-2 rounded-sm hover:bg-[#303030] w-full"
                 >
                   <p className="font-bold text-sm md:text-base">{meal.name}</p>{" "}
                   <p className="meal-info flex gap-2 text-xs md:text-sm">

@@ -16,7 +16,7 @@ export default function Meal({ children }) {
           {userMeals[children] && (
             <button
               onClick={handleShowDetails}
-              className={`text-lg font-bold text-[#82B119] select-none md:cursor-pointer md:text-2xl transition-all ${
+              className={`text-lg font-bold text-[#82B119] select-none md:cursor-pointer md:text-2xl transition-all hover:text-[#a8f108] ${
                 showDetails ? "rotate-180" : ""
               }`}
             >
@@ -33,7 +33,7 @@ export default function Meal({ children }) {
               }}
               color={"#FB2C36"}
             >
-              -
+              ×
             </CircleButton>
           )}
           <CircleButton
