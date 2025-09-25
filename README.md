@@ -1,5 +1,7 @@
 # Diet Planner 🥗
 
+## Live demo: https://zajacmateusz1.github.io/Diet-Planner/
+
 ## Mój profil na GitHub: [ZajacMateusz1](https://github.com/ZajacMateusz1)
 
 ## Opis
