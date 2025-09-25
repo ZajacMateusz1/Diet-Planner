@@ -6,7 +6,6 @@
     "protein": 12,
     "fat": 8,
     "carbs": 60,
-    "tags": ["breakfast", "sweet"],
     "portion": 320
   },
   {
@@ -16,7 +15,6 @@
     "protein": 18,
     "fat": 20,
     "carbs": 6,
-    "tags": ["breakfast", "low-carb"],
     "portion": 220
   },
   {
@@ -26,7 +24,6 @@
     "protein": 42,
     "fat": 9,
     "carbs": 70,
-    "tags": ["lunch", "high-protein"],
     "portion": 450
   },
   {
@@ -36,7 +33,6 @@
     "protein": 35,
     "fat": 22,
     "carbs": 25,
-    "tags": ["lunch", "dinner", "low-carb"],
     "portion": 400
   },
   {
@@ -46,7 +42,6 @@
     "protein": 28,
     "fat": 10,
     "carbs": 20,
-    "tags": ["lunch", "dinner", "light"],
     "portion": 260
   },
   {
@@ -56,7 +51,6 @@
     "protein": 16,
     "fat": 9,
     "carbs": 72,
-    "tags": ["lunch", "vegetarian"],
     "portion": 380
   },
   {
@@ -66,7 +60,6 @@
     "protein": 22,
     "fat": 12,
     "carbs": 40,
-    "tags": ["breakfast", "lunch"],
     "portion": 280
   },
   {
@@ -76,7 +69,6 @@
     "protein": 8,
     "fat": 7,
     "carbs": 40,
-    "tags": ["lunch", "dinner", "vegetarian"],
     "portion": 330
   },
   {
@@ -86,7 +78,6 @@
     "protein": 50,
     "fat": 28,
     "carbs": 55,
-    "tags": ["dinner", "high-protein"],
     "portion": 500
   },
   {
@@ -96,7 +87,6 @@
     "protein": 30,
     "fat": 12,
     "carbs": 45,
-    "tags": ["lunch", "dinner"],
     "portion": 350
   },
   {
@@ -106,7 +96,6 @@
     "protein": 14,
     "fat": 9,
     "carbs": 35,
-    "tags": ["breakfast", "light"],
     "portion": 220
   },
   {
@@ -116,7 +105,6 @@
     "protein": 10,
     "fat": 18,
     "carbs": 25,
-    "tags": ["lunch", "vegetarian", "light"],
     "portion": 280
   }
 ]
